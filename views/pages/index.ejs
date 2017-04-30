@@ -249,7 +249,8 @@ else{
   // Request the camera.
   navigator.getMedia(
     {
-      video: true
+      video: { frameRate: { ideal: 5, max: 10 } },
+      frameRate: 15
     },
     // Success Callback
     function(stream){
@@ -400,7 +401,7 @@ function hideUI(){
   <div class="app">
 
     <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
-    <video id="camera-stream" style="-webkit-filter: brightness(495%);-webkit-filter: contrast(90%);"></video>
+    <video id="camera-stream"></video>
     <img id="snap">
 
     <p id="error-message"></p>
