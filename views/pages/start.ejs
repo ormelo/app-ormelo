@@ -355,7 +355,7 @@ else{
   // Request the camera.
   navigator.getMedia(
     {
-      video: { frameRate: { ideal: 5, max: 10 } }
+      video: { frameRate: { ideal: 10, max: 20 } }
     },
     // Success Callback
     function(stream){
@@ -378,9 +378,6 @@ else{
   );
 
 }
-
-
-
 
 
   // Start video playback manually.
