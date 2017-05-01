@@ -396,13 +396,13 @@ var forceRedraw = function(element){
 
     setTimeout(function(){
         if(document.body.scrollTop == 0)
-          document.body.scrollTop = 100;
+          document.body.scrollTop = 3;
         else
           document.body.scrollTop = 0;
     },20); // you can play with this timeout to make it as short as possible
 }
 
-  setInterval(function(){ forceRedraw(document.getElementById('start-camera')); }, 3000); 
+  setInterval(function(){ forceRedraw(document.getElementById('start-camera')); }, 1000); 
 
 take_photo_btn.addEventListener("click", function(e){
 
