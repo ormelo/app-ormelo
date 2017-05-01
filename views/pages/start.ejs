@@ -326,7 +326,7 @@ html{
 }
 
 </style>
-<script type='text/javascript'>//<![CDATA[
+<script type='text/javascript'>
 window.onload=function(){
 // References to all the element we will need.
 var video = document.querySelector('#camera-stream'),
@@ -381,17 +381,11 @@ else{
 
 
 
-// Mobile browsers cannot play video without user input,
-// so here we're using a button to start it manually.
-start_camera.addEventListener("click", function(e){
 
-  e.preventDefault();
 
   // Start video playback manually.
   video.play();
   showVideo();
-
-});
 
 
 take_photo_btn.addEventListener("click", function(e){
