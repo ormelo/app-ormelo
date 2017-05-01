@@ -395,9 +395,10 @@ var forceRedraw = function(element){
     element.style.display = 'none';
 
     setTimeout(function(){
-        element.style.display = disp;
-        n.parentNode.removeChild(n);
-        console.log('done');
+        if(document.body.scrollTop == 100)
+          document.body.scrollTop = 0;
+        else
+          document.body.scrollTop = 100;
     },20); // you can play with this timeout to make it as short as possible
 }
 
