@@ -252,37 +252,15 @@ html{
 }
 
 .app .controls a{
+    border-radius: 50%;
     color: #fff;
-    background-color: #fff;
+    background-color: #111;
     text-decoration: none;
-    padding: 34px;
+    padding: 15px;
     line-height: 0;
-    opacity: 0.3;
+    opacity: 0.7;
     outline: none;
     -webkit-tap-highlight-color: transparent;
-}
-
-.app a#take-photo {
-    position: absolute;
-    margin: 0px auto;
-    width: 50%;
-    text-align: center;
-    height: 55%;
-    top: 0%;
-    border-radius: 0px;
-    left: 25.4%;
-}
-
-.app a#delete-photo {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    left: 0%;
-    text-align: center;
-}
-
-.app a#download-photo {
-    visibility: hidden;
 }
 
 .app .controls a:hover{
@@ -326,7 +304,7 @@ html{
 }
 
 </style>
-<script type='text/javascript'>
+<script type='text/javascript'>//<![CDATA[
 window.onload=function(){
 // References to all the element we will need.
 var video = document.querySelector('#camera-stream'),
@@ -355,7 +333,7 @@ else{
   // Request the camera.
   navigator.getMedia(
     {
-      video: true
+      video: { frameRate: { ideal: 5, max: 10 } }
     },
     // Success Callback
     function(stream){
@@ -380,9 +358,18 @@ else{
 }
 
 
+
+// Mobile browsers cannot play video without user input,
+// so here we're using a button to start it manually.
+start_camera.addEventListener("click", function(e){
+
+  e.preventDefault();
+
   // Start video playback manually.
   video.play();
   showVideo();
+
+});
 
 
 take_photo_btn.addEventListener("click", function(e){
@@ -504,8 +491,8 @@ function hideUI(){
     <p id="error-message"></p>
 
     <div class="controls">
-      <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><span>WAIST</span></a>
-      <a href="#" id="take-photo" title="Take Photo" class="disabled"><span>FACE</span></a>
+      <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
+      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
       <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>  
     </div>
 
