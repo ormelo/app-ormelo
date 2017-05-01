@@ -6,6 +6,8 @@
 <title>Ormelo - Trial & Shop</title>
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 *{
     box-sizing: border-box;
     margin: 0;
@@ -38,10 +40,10 @@ html{
 }
 .btn span {
     position: relative;
-    top: 12px;
+    top: 14px;
     font-size: 18px;
-    font-weight: 900;
-    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 1px;
+    font-family: 'Raleway', sans-serif;
 }
 .btn:after {
     position: absolute;
@@ -75,13 +77,7 @@ html{
       background-position-y: -15px;
     }
     .logo {
-      background-image: url(logo_m.png);
-      width: 130px;
-      height: 46px;
-      margin: 0 auto;
-      background-size: contain;
-      top: 20px;
-      position: relative;
+      
     }
     .headline {
       margin: 0 auto;
@@ -89,13 +85,12 @@ html{
       font-size: 28px;
     }
     .description {
-      margin: 0 auto;
-      width: 80%;
-      font-size: 18px;
-      margin-top: 12px;
+      font-size: 20px;
       text-align: center;
       line-height: 26px;
       padding-bottom: 46px;
+      position: absolute;
+      top: 26px;
     }
     .gylph img {
       width: 134px;
@@ -124,14 +119,7 @@ html{
       background-position-y: -31px;
     }
     .logo {
-      background-image: url(logo_s.png);
-      width: 152px;
-      height: 50px;
-      margin-top: 0px;
-      margin-left: 60px;
-      background-size: contain;
-      top: 40px;
-      position: relative;
+      
     }
     .headline {
       margin-left: 65px;
@@ -140,12 +128,12 @@ html{
       font-size: 30px;
     }
     .description {
-      margin-left: 65px;
-      width: 80%;
       font-size: 20px;
-      padding-bottom: 50px;
-      margin-top: 12px;
+      text-align: center;
       line-height: 26px;
+      padding-bottom: 46px;
+      position: absolute;
+      top: 26px;
     }
     .gylph img {
       width: 184px;
@@ -174,15 +162,7 @@ html{
       background-position-y: -31px;
     }
     .logo {
-      background-image: url(logo_m.png);
-      background-size: contain;
-      position: relative;
-      width: 187px;
-      height: 70px;
-      left: 80px;
-      margin-top: 0px;
-      margin-left: 0px;
-      top: 30px;
+      
     }
     .headline {
       margin-left: 85px;
@@ -192,12 +172,12 @@ html{
       font-weight: 500;
     }
     .description {
-      margin-left: 85px;
-      width: 80%;
-      font-size: 24px;
-      padding-bottom: 50px;
-      margin-top: 12px;
+      font-size: 20px;
+      text-align: center;
       line-height: 26px;
+      padding-bottom: 46px;
+      position: absolute;
+      top: 26px;
     }
     .gylph img {
       width: 184px;
@@ -214,18 +194,336 @@ html{
       width: 172px;
     }
 }
+.app{
+    width: 100%;
+    position: relative;
+}
+
+.app #start-camera{
+    display: none;
+    border-radius: 3px;
+    max-width: 400px;
+    color: #fff;
+    background-color: #448AFF;
+    text-decoration: none;
+    padding: 15px;
+    opacity: 0.8;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.app video#camera-stream{
+    display: none;
+    width: 100%;
+}
+
+.app img#snap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    display: none;
+}
+
+.app #error-message{
+    width: 100%;
+    background-color: #ccc;
+    color: #9b9b9b;
+    font-size: 28px;
+    padding: 200px 100px;
+    text-align: center;
+    display: none;
+}
+
+.app .controls{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 30px;
+    display: none;
+}
+
+.app .controls a{
+    color: #fff;
+    background-color: #fff;
+    text-decoration: none;
+    padding: 34px;
+    line-height: 0;
+    opacity: 0.3;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.app a#take-photo {
+    position: absolute;
+    margin: 0px auto;
+    width: 50%;
+    text-align: center;
+    height: 55%;
+    top: 0%;
+    border-radius: 0px;
+    left: 25.4%;
+}
+
+.app a#delete-photo {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0%;
+    text-align: center;
+}
+
+.app a#download-photo {
+    visibility: hidden;
+}
+
+.app .controls a:hover{
+    opacity: 1;
+}
+
+.app .controls a.disabled{
+    background-color: #555;
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+.app .controls a.disabled:hover{
+    opacity: 0.5;
+}
+
+.app .controls a i{
+    font-size: 18px;
+}
+
+.app .controls #take-photo i{
+    font-size: 32px;
+}
+
+.app canvas{
+    display: none;
+}
+
+
+
+.app video#camera-stream.visible,
+.app img#snap.visible,
+.app #error-message.visible
+{
+    display: block;
+}
+
+.app .controls.visible{
+    display: flex;
+}
 
 </style>
+<script type='text/javascript'>//<![CDATA[
+window.onload=function(){
+// References to all the element we will need.
+var video = document.querySelector('#camera-stream'),
+    image = document.querySelector('#snap'),
+    start_camera = document.querySelector('#start-camera'),
+    controls = document.querySelector('.controls'),
+    take_photo_btn = document.querySelector('#take-photo'),
+    delete_photo_btn = document.querySelector('#delete-photo'),
+    download_photo_btn = document.querySelector('#download-photo'),
+    error_message = document.querySelector('#error-message');
+
+
+// The getUserMedia interface is used for handling camera input.
+// Some browsers need a prefix so here we're covering all the options
+navigator.getMedia = ( navigator.getUserMedia ||
+                      navigator.webkitGetUserMedia ||
+                      navigator.mozGetUserMedia ||
+                      navigator.msGetUserMedia);
+
+
+if(!navigator.getMedia){
+  displayErrorMessage("Your browser doesn't have support for the navigator.getUserMedia interface.");
+}
+else{
+
+  // Request the camera.
+  navigator.getMedia(
+    {
+      video: { frameRate: { ideal: 5, max: 10 } }
+    },
+    // Success Callback
+    function(stream){
+
+      // Create an object URL for the video stream and
+      // set it as src of our HTLM video element.
+      video.src = window.URL.createObjectURL(stream);
+
+      // Play the video element to start the stream.
+      video.play();
+      video.onplay = function() {
+        showVideo();
+      };
+
+    },
+    // Error Callback
+    function(err){
+      displayErrorMessage("There was an error with accessing the camera stream: " + err.name, err);
+    }
+  );
+
+}
+
+
+
+// Mobile browsers cannot play video without user input,
+// so here we're using a button to start it manually.
+start_camera.addEventListener("click", function(e){
+
+  e.preventDefault();
+
+  // Start video playback manually.
+  video.play();
+  showVideo();
+
+});
+
+
+take_photo_btn.addEventListener("click", function(e){
+
+  e.preventDefault();
+
+  var snap = takeSnapshot();
+
+  // Show image. 
+  image.setAttribute('src', snap);
+  image.classList.add("visible");
+
+  // Enable delete and save buttons
+  delete_photo_btn.classList.remove("disabled");
+  download_photo_btn.classList.remove("disabled");
+
+  // Set the href attribute of the download button to the snap url.
+  download_photo_btn.href = snap;
+
+  // Pause video playback of stream.
+  video.pause();
+
+});
+
+
+delete_photo_btn.addEventListener("click", function(e){
+
+  e.preventDefault();
+
+  // Hide image.
+  image.setAttribute('src', "");
+  image.classList.remove("visible");
+
+  // Disable delete and save buttons
+  delete_photo_btn.classList.add("disabled");
+  download_photo_btn.classList.add("disabled");
+
+  // Resume playback of stream.
+  video.play();
+
+});
+
+
+
+function showVideo(){
+  // Display the video stream and the controls.
+
+  hideUI();
+  video.classList.add("visible");
+  controls.classList.add("visible");
+}
+
+
+function takeSnapshot(){
+  // Here we're using a trick that involves a hidden canvas element.  
+
+  var hidden_canvas = document.querySelector('canvas'),
+      context = hidden_canvas.getContext('2d');
+
+  var width = video.videoWidth,
+      height = video.videoHeight;
+
+  if (width && height) {
+
+    // Setup a canvas with the same dimensions as the video.
+    hidden_canvas.width = width;
+    hidden_canvas.height = height;
+
+    // Make a copy of the current frame in the video on the canvas.
+    context.drawImage(video, 0, 0, width, height);
+
+    // Turn the canvas image into a dataURL that can be used as a src for our photo.
+    return hidden_canvas.toDataURL('image/png');
+  }
+}
+
+
+function displayErrorMessage(error_msg, error){
+  error = error || "";
+  if(error){
+    console.log(error);
+  }
+
+  error_message.innerText = error_msg;
+
+  hideUI();
+  error_message.classList.add("visible");
+}
+
+
+function hideUI(){
+  // Helper function for clearing the app UI.
+
+  controls.classList.remove("visible");
+  start_camera.classList.remove("visible");
+  video.classList.remove("visible");
+  snap.classList.remove("visible");
+  error_message.classList.remove("visible");
+}
+}//]]> 
+
+</script>
 </head>
 
 <body>
 <div class="container">
-<div class="glitter">
-<div class="logo"></div>
-</div>
+<div>
+<span class="logo">
+  <img src="logos.png" style="width: 28px;margin: 12px 12px;">
+  
+</span>
+<span class="description">Click Selfie</span></div>
+<div class="app">
 
+    <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+    <video id="camera-stream"></video>
+    <img id="snap">
+
+    <p id="error-message"></p>
+
+    <div class="controls">
+      <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><span>WAIST</span></a>
+      <a href="#" id="take-photo" title="Take Photo" class="disabled"><span>FACE</span></a>
+      <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>  
+    </div>
+
+    <!-- Hidden canvas element. Used for taking snapshot of video. -->
+    <canvas></canvas>
+
+  </div>
 <div class="button-container">
-  <a href="#" class="btn"><span>Take a selfie</span></a>
+  <a href="#" class="btn"><span>Capture</span></a>
   </div>
 </div>
 </body>
