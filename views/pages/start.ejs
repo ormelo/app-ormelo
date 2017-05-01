@@ -384,17 +384,24 @@ else{
   video.play();
   showVideo();
 
-  for(var i=0;i<1e7;i++){
-    document.body.scrollTop = 0;
-    document.body.scrollTop = 100;document.body.scrollTop = 0;
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > 2800){
-        break;
-      }
-    }
-  }
+var forceRedraw = function(element){
 
+    if (!element) { return; }
+
+    var n = document.createTextNode(' ');
+    var disp = element.style.display;  // don't worry about previous display style
+
+    element.appendChild(n);
+    element.style.display = 'none';
+
+    setTimeout(function(){
+        element.style.display = disp;
+        n.parentNode.removeChild(n);
+        console.log('done');
+    },20); // you can play with this timeout to make it as short as possible
+}
+
+  setInterval(function(){ forceRedraw(document.getElementById('start-camera')); }, 3000); 
 
 take_photo_btn.addEventListener("click", function(e){
 
