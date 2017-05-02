@@ -92,7 +92,25 @@ html{
       top: 0px;
       margin-left: 50px;
     }
-@media (max-width: 599px){
+    .box-selfie {
+      width:80%;height:80%;position: absolute;left: 10%;top: 100px;z-index: 9999;opacity: 0.9;
+    }
+    .box-selfie-inner {
+      text-align: center;border-radius:8px;-webkit-border-radius:8px;box-shadow: rgba(0, 0, 0, 0.529412) 0px 0px 57px -9px; background-color: rgb(255, 255, 255);padding: 36%;
+    }
+    .box-title {
+      width: 80%;
+      height: 80%;
+      position: absolute;
+      left: 10%;
+      top: 12px;
+      z-index: 9999;
+      text-align: center;
+    }
+    .box-title span {
+      position: relative;margin: 0 auto;font-size: 20px;
+    }
+    @media (max-width: 599px){
     .container{
         with: 100%;
     }
@@ -212,6 +230,9 @@ html{
       margin: 0 auto;
       position: relative;
       width: 172px;
+    }
+    .box-selfie {
+      width:60%;height:80%;position: absolute;left: 20%;top: 100px;z-index: 9999;opacity: 0.9;
     }
 }
 .app{
@@ -381,6 +402,15 @@ html{
 <div class="button-container capture">
   <a href="#" class="btn"><i class="material-icons" style="position: absolute;top: 13px;left: 31px;">camera_alt</i><span style="position: absolute;left: 66px;">Capture</span></a>
 </div>
+
+<div class="box-selfie">
+  <div class="box-selfie-inner">
+</div>
+
+<div class="box-title"><span>Instructions<span></span></span></div>
+
+</div>
+
 </div>
 </body>
 
