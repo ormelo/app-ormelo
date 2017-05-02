@@ -4,7 +4,7 @@ var video = document.querySelector('#camera-stream'),
     image = document.querySelector('#snap'),
     start_camera = document.querySelector('#start-camera'),
     controls = document.querySelector('.controls'),
-    take_photo_btn = document.querySelector('#take-photo'),
+    take_photo_btn = document.querySelector('#capture-photo'),
     delete_photo_btn = document.querySelector('#delete-photo'),
     download_photo_btn = document.querySelector('#download-photo'),
     error_message = document.querySelector('#error-message');
@@ -148,4 +148,12 @@ function hideUI(){
   snap.classList.remove("visible");
   error_message.classList.remove("visible");
 }
+
+$('#btn_got_it').on('click', function(e) {
+  $('.box_instructions').hide();
+});
+}
+
+function beeLeft(elemId) {
+    $("#"+elemId).animate({left: "-=100"}, 1500, "swing", beeRight);
 }
