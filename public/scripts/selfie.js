@@ -52,8 +52,8 @@ else{
 
 
   // Start video playback manually.
-  video.play();
-  showVideo();
+  // video.play();
+  // showVideo();
 
 var forceRedraw = function(element){
 
