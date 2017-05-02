@@ -74,6 +74,24 @@ html{
     -webkit-transform: translateX(-200px);
     transform: translateX(-200px);
 }
+.description.enabled {
+      opacity: 1;
+    }
+    .description {
+      font-size: 20px;
+      text-align: center;
+      line-height: 26px;
+      padding-bottom: 46px;
+      position: relative;
+      top: 26px;
+      margin-right: 24px;
+      opacity: 0.3;
+    }
+    .top-menu {
+      position: absolute;
+      top: 0px;
+      margin-left: 50px;
+    }
 @media (max-width: 599px){
     .container{
         with: 100%;
@@ -84,21 +102,13 @@ html{
       background-size: cover;
       background-position-y: -15px;
     }
-    .logo {
-      
+    .large-logo {
+      display: none;
     }
     .headline {
       margin: 0 auto;
       width: 270px;
       font-size: 28px;
-    }
-    .description {
-      font-size: 20px;
-      text-align: center;
-      line-height: 26px;
-      padding-bottom: 46px;
-      position: absolute;
-      top: 26px;
     }
     .gylph img {
       width: 134px;
@@ -126,22 +136,23 @@ html{
       background-size: cover;
       background-position-y: -31px;
     }
-    .logo {
-      
+    .large-logo {
+      display: inline;
+      width: 134px;
+    }
+    .small-logo {
+      display: none;
+    }
+    .top-menu {
+      position: absolute;
+      top: 0px;
+      margin-left: 190px;
     }
     .headline {
       margin-left: 65px;
       width: 300px;
       padding-top: 50px;
       font-size: 30px;
-    }
-    .description {
-      font-size: 20px;
-      text-align: center;
-      line-height: 26px;
-      padding-bottom: 46px;
-      position: absolute;
-      top: 26px;
     }
     .gylph img {
       width: 184px;
@@ -169,8 +180,17 @@ html{
       background-size: cover;
       background-position-y: -31px;
     }
-    .logo {
-      
+    .large-logo {
+      display: inline;
+      width: 154px;
+    }
+    .small-logo {
+      display: none;
+    }
+    .top-menu {
+      position: absolute;
+      top: 0px;
+      margin-left: 280px;
     }
     .headline {
       margin-left: 85px;
@@ -178,14 +198,6 @@ html{
       padding-top: 50px;
       font-size: 36px;
       font-weight: 500;
-    }
-    .description {
-      font-size: 20px;
-      text-align: center;
-      line-height: 26px;
-      padding-bottom: 46px;
-      position: absolute;
-      top: 26px;
     }
     .gylph img {
       width: 184px;
@@ -343,10 +355,11 @@ html{
 <div class="container">
 <div>
 <span class="logo">
-  <img src="logos.png" style="width: 28px;margin: 12px 12px;">
-  
+  <img class="small-logo" src="logos.png" style="width: 28px;margin: 12px 12px;">
+  <img class="large-logo" src="logom.png" style="margin: 12px 12px;">
 </span>
-<span class="description">Click Selfie</span></div>
+<div class="top-menu"><span class="description enabled">Take Selfie</span><span class="description">Enter Height</span><span class="description">Shop</span></div>
+
 <div class="app">
 
     <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
