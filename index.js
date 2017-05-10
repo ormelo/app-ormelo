@@ -13,6 +13,10 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.get('/onboard', function(request, response) {
+  response.render('pages/onboard');
+});
+
 app.get('/start', function(request, response) {
   response.render('pages/start');
 });

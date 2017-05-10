@@ -4,6 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 <title>Ormelo - Trial & Shop</title>
+<link rel="stylesheet" href="stylesheets/font-awesome.min.css">
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
@@ -17,6 +18,75 @@ html{
     background-color: #ffffff;
     font-family: 'Quicksand', sans-serif;
 }
+
+
+#slides {
+      display: none
+    }
+
+    #slides .slidesjs-navigation {
+      margin-top:3px;
+    }
+
+    #slides .slidesjs-previous {
+      margin-right: 5px;
+      float: left;
+    }
+
+    #slides .slidesjs-next {
+      margin-right: 5px;
+      float: left;
+    }
+
+    .slidesjs-pagination {
+      margin: 6px 0 0;
+      float: right;
+      list-style: none;
+    }
+
+    .slidesjs-pagination li {
+      float: left;
+      margin: 0 1px;
+    }
+
+    .slidesjs-pagination li a {
+      display: block;
+      width: 13px;
+      height: 0;
+      padding-top: 13px;
+      background-image: url(img/pagination.png);
+      background-position: 0 0;
+      float: left;
+      overflow: hidden;
+    }
+
+    .slidesjs-pagination li a.active,
+    .slidesjs-pagination li a:hover.active {
+      background-position: 0 -13px
+    }
+
+    .slidesjs-pagination li a:hover {
+      background-position: 0 -26px
+    }
+
+    #slides a:link,
+    #slides a:visited {
+      color: #333
+    }
+
+    #slides a:hover,
+    #slides a:active {
+      color: #9e2020
+    }
+
+    .navbar {
+      overflow: hidden
+    }
+
+    #slides {
+      display: none
+    }
+
 .button-container {
     padding-top: 36px;
     margin: 0 auto;
@@ -101,7 +171,7 @@ html{
       padding-bottom: 46px;
     }
     .gylph img {
-      width: 110px;
+      width: 200px;
     }
     .gylph {
         width: 110px;
@@ -119,9 +189,6 @@ html{
 @media (min-width: 600px){
     .container{
         with: 100%;
-    }
-    .btn {
-      width: 275px;
     }
     .glitter {
       background-image: url(glitter.jpg);
@@ -154,7 +221,7 @@ html{
       line-height: 26px;
     }
     .gylph img {
-      width: 184px;
+      width: 200px;
       margin-left: 26px;
     }
     .gylph {
@@ -172,9 +239,6 @@ html{
     .container{
         width: 1025px;
         margin: 0 auto;
-    }
-    .btn {
-      width: 275px;
     }
     .glitter {
       background-image: url(glitter.jpg);
@@ -208,7 +272,7 @@ html{
       line-height: 26px;
     }
     .gylph img {
-      width: 184px;
+      width: 200px;
       margin-left: 26px;
     }
     .gylph {
@@ -224,6 +288,7 @@ html{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -231,16 +296,35 @@ html{
 <div class="glitter">
 <div class="logo"></div>
 </div>
-<div class="headline"><span>TRIAL & SHOP</div><br>
-<div class="description">Get the right fit everytime you shop online!</div>
-<div class="gylph">
-  <img src="fit_gylph.png"/>
+<div >
+  <div id="slides">
+    <div class="gylph">
+    <img src="img/slide1.png" style="margin-left: 25vw;" />
+    </div>
+    <div class="gylph">
+    <img src="img/slide2.png" style="margin-left: 8vw;width: 300px;"/>
+    </div>
+    <div class="gylph">
+    <img src="img/slide3.png" style="margin-left: 19vw;width: 300px;"/>
+    </div>
+  </div>
 </div>
 <div class="button-container">
-  <a href="onboard" class="btn"><span>Tell me how ></span></a>
+  <a href="#" id="next" class="btn slidesjs-next" onclick="slider.next();"><span>Next ></span></a>
   </div>
 </div>
 <div class="glitter" style="margin-top:-100px;z-index:0;">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="scripts/jquery.slides.min.js"></script>
+<script>
+    $(function() {
+      $('#slides').slidesjs({
+        width: 940,
+        height: 728,
+        navigation: false
+      });
+    });
+</script>
 </body>
 
 </html>
