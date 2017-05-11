@@ -38,19 +38,11 @@ html{
       float: left;
     }
 
-    .slidesjs-pagination {
-       left: 0;
-    float: right;
-    list-style: none;
-    margin: 0 auto;
-    top: 0;
-    width: 54%;
-
-    }
+    
 
     .slidesjs-pagination li {
       float: left;
-      margin: 0 1px;
+      margin: 0 4px;
     }
 
     .slidesjs-pagination li a {
@@ -139,9 +131,21 @@ html{
     -webkit-transform: translateX(-200px);
     transform: translateX(-200px);
 }
+.gylph .img-container {
+  margin: 0 auto;
+  width: 174px;
+}
 @media (max-width: 599px){
     .container{
         with: 100%;
+    }
+    .slidesjs-pagination {
+      left: 0;
+      float: right;
+      list-style: none;
+      margin: 0 auto;
+      top: 0;
+      width: 56vw;
     }
     .glitter {
       background-image: url(glitter.jpg);
@@ -150,20 +154,22 @@ html{
       background-position-y: -15px;
     }
     .logo {
-      background-image: url(logom.png);
-      width: 122px;
+      background-image: url(logos.png);
+      width: 26px;
       height: 40px;
       margin: 0 auto;
       background-size: contain;
       top: 26px;
-      position: relative;
+      position: absolute;
+      left: 20px;
     }
     .headline {
       margin: 0 auto;
-      width: 340px;
+      width: 280px;
       font-size: 24px;
       letter-spacing: 2px;
       text-align: center;
+      margin-bottom: 24px;
     }
     .description {
       margin: 0 auto;
@@ -174,11 +180,11 @@ html{
       line-height: 26px;
       padding-bottom: 46px;
     }
-    .gylph img {
-      width: 200px;
+    .gylph .img-container img {
+      width: 120px;
     }
     .gylph {
-        width: 110px;
+        width: 300px;
         margin: 0 auto;
         left: 6px;
         position: relative;
@@ -193,6 +199,14 @@ html{
 @media (min-width: 600px){
     .container{
         with: 100%;
+    }
+    .slidesjs-pagination {
+      left: 0;
+      float: right;
+      list-style: none;
+      margin: 0 auto;
+      top: 0;
+      width: 51vw;
     }
     .glitter {
       background-image: url(glitter.jpg);
@@ -213,8 +227,10 @@ html{
     .headline {
       margin-left: 65px;
       padding-top: 50px;
+      margin-bottom: 24px;
       font-size: 30px;
       letter-spacing: 2px;
+      text-align: center;
     }
     .description {
       margin-left: 65px;
@@ -224,25 +240,33 @@ html{
       margin-top: 12px;
       line-height: 26px;
     }
-    .gylph img {
-      width: 200px;
+    .gylph .img-container img {
+      width: 120px;
       margin-left: 26px;
     }
     .gylph {
-        width: 200px;
+        width: 400px;
         margin: 0 auto;
     }
     .button-container {
       padding-top: 36px;
       margin: 0 auto;
       position: relative;
-      width: 240px;
+      width: 186px;
     }
 }
 @media (min-width: 1025px){
     .container{
         width: 1025px;
         margin: 0 auto;
+    }
+    .slidesjs-pagination {
+      left: 0;
+      float: right;
+      list-style: none;
+      margin: 0 auto;
+      top: 0;
+      width: 50%;
     }
     .glitter {
       background-image: url(glitter.jpg);
@@ -266,6 +290,7 @@ html{
       padding-top: 50px;
       font-size: 36px;
       letter-spacing: 2px;
+      text-align: center;
     }
     .description {
       margin-left: 85px;
@@ -275,19 +300,19 @@ html{
       margin-top: 12px;
       line-height: 26px;
     }
-    .gylph img {
-      width: 200px;
+    .gylph .img-container img {
+      width: 120px;
       margin-left: 26px;
     }
     .gylph {
-        width: 200px;
+        width: 500px;
         margin: 0 auto;
     }
     .button-container {
       padding-top: 36px;
       margin: 0 auto;
       position: relative;
-      width: 240px;
+      width: 156px;
     }
 }
 
@@ -301,20 +326,24 @@ html{
 <div class="logo"></div>
 </div>
 <div >
-  <div id="slides">
+<div class="gylph">
+  <div class="headline">You'll start by clicking a selfie</div>
+  <div class="img-container"><img class="slideImg" style="width:190px;left:-60px;" src="img/1.png"/></div>
+</div>
+  <div id="slides" style="margin-top: 40px;">
     <div class="gylph">
-    <img src="img/slide1.png" style="margin-left: 25vw;" />
+    <img style="margin-left: 25vw;" />
     </div>
     <div class="gylph">
-    <img src="img/slide2.png" style="margin-left: 8vw;width: 300px;"/>
+    <img style="margin-left: 25vw;width: 300px;"/>
     </div>
     <div class="gylph">
-    <img src="img/slide3.png" style="margin-left: 10vw;width: 300px;"/>
+    <img style="margin-left: 25vw;width: 300px;"/>
     </div>
   </div>
 </div>
 <div class="button-container">
-  <a href="#" id="next" class="btn slidesjs-next" onclick="slider.next();"><span>Next ></span></a>
+  <a href="#" id="next" class="btn slidesjs-next" onclick="slider.next();"><span class="cta">Next ></span></a>
   </div>
 </div>
 <div class="glitter" style="margin-top:-100px;z-index:0;">
@@ -323,11 +352,12 @@ html{
 <script>
     $(function() {
       $('#slides').slidesjs({
-        width: 940,
-        height: 728,
         navigation: false
       });
     });
+
+
+
 </script>
 </body>
 
