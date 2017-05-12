@@ -133,7 +133,7 @@ html{
 }
 .gylph .img-container {
   margin: 0 auto;
-  width: 174px;
+  width: 200px;
 }
 @media (max-width: 599px){
     .container{
@@ -145,7 +145,7 @@ html{
       list-style: none;
       margin: 0 auto;
       top: 0;
-      width: 56vw;
+      width: 59vw;
     }
     .glitter {
       background-image: url(glitter.jpg);
@@ -166,8 +166,7 @@ html{
     .headline {
       margin: 0 auto;
       width: 280px;
-      font-size: 24px;
-      letter-spacing: 2px;
+      font-size: 20px;
       text-align: center;
       margin-bottom: 24px;
     }
@@ -194,6 +193,9 @@ html{
       margin: 0 auto;
       position: relative;
       width: 212px;
+    }
+    .bubble {
+      top: -300px;position: relative;margin: 0 auto;width: 81px;float: right;right: 10vw;
     }
 }
 @media (min-width: 600px){
@@ -229,7 +231,6 @@ html{
       padding-top: 50px;
       margin-bottom: 24px;
       font-size: 30px;
-      letter-spacing: 2px;
       text-align: center;
     }
     .description {
@@ -245,7 +246,7 @@ html{
       margin-left: 26px;
     }
     .gylph {
-        width: 400px;
+        width: 500px;
         margin: 0 auto;
     }
     .button-container {
@@ -253,6 +254,9 @@ html{
       margin: 0 auto;
       position: relative;
       width: 186px;
+    }
+    .bubble {
+      top: -300px;position: relative;margin: 0 auto;width: 81px;float: right;right: 25vw;
     }
 }
 @media (min-width: 1025px){
@@ -289,7 +293,6 @@ html{
       margin-left: 85px;
       padding-top: 50px;
       font-size: 36px;
-      letter-spacing: 2px;
       text-align: center;
     }
     .description {
@@ -305,7 +308,7 @@ html{
       margin-left: 26px;
     }
     .gylph {
-        width: 500px;
+        width: 600px;
         margin: 0 auto;
     }
     .button-container {
@@ -314,7 +317,78 @@ html{
       position: relative;
       width: 156px;
     }
+    .bubble {
+      top: -300px;position: relative;margin: 0 auto;width: 81px;float: right;right: 36vw;
+    }
 }
+
+
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeInUp {
+  0% {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  }
+  100% {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+  }
+  }
+  @keyframes fadeInUp {
+  0% {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  }
+  100% {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+  }
+  } 
+
+  .fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeInRight {
+  0% {
+  opacity: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+  }
+  100% {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+  }
+  }
+  @keyframes fadeInRight {
+  0% {
+  opacity: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+  }
+  100% {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+  }
+  }
 
 </style>
 
@@ -327,8 +401,10 @@ html{
 </div>
 <div >
 <div class="gylph">
-  <div class="headline">You'll start by clicking a selfie</div>
-  <div class="img-container"><img class="slideImg" style="width:190px;left:-60px;" src="img/1.png"/></div>
+  <div class="headline fadeInRight">Ordering clothes online has always been frustrating!</div>
+  <div class="img-container">
+  <img class="slideImg" style="width:190px;left:-60px;visibility: visible;" src="img/001.png"/>
+  </div>
   <img style="width:0px;" src="img/2.png"/>
   <img style="Width:0px;" src="img/3.png"/>
 </div>
@@ -342,12 +418,19 @@ html{
     <div class="gylph">
     <img style="margin-left: 25vw;width: 300px;"/>
     </div>
+    <div class="gylph">
+    <img style="margin-left: 25vw;width: 300px;"/>
+    </div>
+    <div class="gylph">
+    <img style="margin-left: 25vw;width: 300px;"/>
+    </div>
   </div>
 </div>
 <div class="button-container">
-  <a href="#" id="next" class="btn slidesjs-next" onclick="slider.next();"><span class="cta">Next ></span></a>
+  <a href="#" id="next" class="btn slidesjs-next" style="visibility: hidden" onclick="slider.next();"><span class="cta">Next ></span></a>
   </div>
 </div>
+<img class="bubble" style="display: none" src="img/msg_badfit.png">
 <div class="glitter" style="margin-top:-58px;z-index:0;">
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="scripts/jquery.slides.min.js"></script>
@@ -359,6 +442,20 @@ html{
     });
 
 
+function playAnim() {
+  if($('.slideImg').attr('src')=='img/001.png') {
+    setTimeout(function(){$('.slideImg').css('visibility','visible');},2300);
+    setTimeout(function(){$('.slideImg').attr('src','img/002.png');},2000);
+    setTimeout(function(){$('.bubble').show();},2300);
+    setTimeout(function(){$('.slideImg').attr('src','img/003.png');},3200);
+    setTimeout(function(){$('.bubble').attr('src','img/msg_badcolor.png');},3200);
+    setTimeout(function(){$('.slideImg').attr('src','img/004.png');},4500);
+    setTimeout(function(){$('.bubble').attr('src','img/msg_poorquality.png');},4500);
+    setTimeout(function(){$('#next').css('visibility','visible');},4900);
+  }
+}
+
+playAnim();
 
 </script>
 </body>
