@@ -107,8 +107,8 @@ take_photo_btn.addEventListener("click", function(e){
       $('#take-photo').html('');
       $('.capture').css('visibility','hidden');
       $(".trigger").toggleClass("drawn");
-      setTimeout(function(){ location.href='/start'; }, 2600);
-    }, 2500);
+      setTimeout(function(){ location.href='/start'; }, 1000);
+    }, 3000);
 
 });
 
