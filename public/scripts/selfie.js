@@ -64,12 +64,12 @@ var forceRedraw = function(element){
     element.appendChild(n);
     element.style.display = 'none';
 
-    setTimeout(function(){
+    /* setTimeout(function(){
         if(document.body.scrollTop == 0)
           document.body.scrollTop = 1;
         else
           document.body.scrollTop = 0;
-    },20);
+    },20); */
 }
 
 setInterval(function(){ forceRedraw(document.getElementById('start-camera')); }, 600); 
@@ -91,9 +91,26 @@ take_photo_btn.addEventListener("click", function(e){
   // Set the href attribute of the download button to the snap url.
   download_photo_btn.href = snap;
 
+  demo_app();
+  tick(faceClassifier, 'face');
+  tick(upperBodyClassifier, 'upperbody');
+
   // Pause video playback of stream.
   video.pause();
-
+  setTimeout(function(){console.log('faceX: ', faceX);
+    console.log('faceY: ', faceY);
+    console.log('faceW: ', faceW);
+    console.log('faceH: ', faceH);
+    console.log('shoulderX: ', shoulderX);
+    console.log('shoulderY: ', shoulderY);
+    console.log('shoulderW: ', shoulderW);
+    console.log('shoulderH: ', shoulderH);
+    //alert('Face: '+ faceX+', '+faceY+', '+faceW+', '+faceH);
+    //alert('Shoulder: '+ shoulderX+', '+shoulderY+', '+shoulderW+', '+shoulderH);
+    //alert('Retry count: '+ retryCount);}, 3000);
+    var fswRatio = faceW/(shoulderW*2);
+    alert('F/S:'+fswRatio);
+  }, 3000);
 });
 
 function showVideo(){

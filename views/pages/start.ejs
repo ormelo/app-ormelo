@@ -78,6 +78,7 @@ html{
       opacity: 1;
     }
     .description {
+      left: 20px;
       font-size: 20px;
       text-align: center;
       line-height: 26px;
@@ -338,7 +339,7 @@ html{
     text-decoration: none;
     padding: 34px;
     line-height: 0;
-    opacity: 0.3;
+    opacity: 1;
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
@@ -372,9 +373,10 @@ html{
 
 .app .controls a.disabled{
     background-color: transparent;
-    opacity: 0.5;
+    opacity: 1;
     cursor: default;
     pointer-events: none;
+    background: rgba(95, 95, 95, 0.69);
     background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
     background-position: bottom;
     background-size: 2px 1px;
@@ -382,7 +384,7 @@ html{
 }
 
 .app .controls a.disabled:hover{
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .app .controls a i{
@@ -414,6 +416,14 @@ html{
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
 <script src="scripts/selfie.js"></script>
+<script type="text/javascript" src="haar/lib/jsfeat-samples/js/jsfeat-min.js"></script>
+<script type="text/javascript" src="haar/lib/jsfeat-samples/js/frontalface.js"></script>
+<script type="text/javascript" src="haar/lib/jsfeat/cascades/mouth.js"></script>
+<script type="text/javascript" src="haar/lib/jsfeat/cascades/eye.js"></script>
+<script type="text/javascript" src="haar/lib/jsfeat/cascades/upperbody.js"></script>
+<script type="text/javascript" src="haar/lib/jsfeat-samples/js/compatibility.js"></script>
+<script type="text/javascript" src="haar/lib/jsfeat-samples/js/profiler.js"></script>
+<script type="text/javascript" src="haar/lib/jsfeat-samples/js/dat.gui.min.js"></script>
 </head>
 
 <body>
@@ -423,12 +433,12 @@ html{
   <img class="small-logo" src="logos.png" style="width: 28px;margin: 12px 12px;">
   <img class="large-logo" src="logom.png" style="margin: 12px 12px;">
 </span>
-<div class="top-menu"><span class="description enabled">Take Selfie</span><span class="description">Enter Height</span><span class="description">Shop</span></div>
+<div class="top-menu"><span class="description enabled">Selfie</span><span class="description">e-measure</span><span class="description">Shop</span></div>
 
 <div class="app">
 
     <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
-    <video id="camera-stream"></video>
+    <video id="camera-stream" ></video>
     <img id="snap">
 
     <p id="error-message"></p>
@@ -440,29 +450,150 @@ html{
     </div>
 
     <!-- Hidden canvas element. Used for taking snapshot of video. -->
-    <canvas></canvas>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    
 
   </div>
 <div class="button-container capture">
   <a id="capture-photo" href="#" class="btn"><i class="material-icons" style="position: absolute;top: 13px;left: 31px;">camera_alt</i><span style="position: absolute;left: 66px;">Capture</span></a>
 </div>
 
-<div class="box-selfie box_instructions">
-  <div class="box-selfie-inner">
-</div>
-
-<div class="box-title box_instructions" >
-  <span>Instructions<div>
-  <img src="selfie_ins.png" style="width: 127px;margin-top: 15%;"><div class="anim" style="margin-top: 20px;font-size: 18px;">Position your face and waist area inside the boxes</div>
-  </div>
-  <div class="button-container" id="btn_got_it">
-  <a href="#" class="btn"><span style="position: absolute;left: 66px;top: 12px;">Got It</span></a>
-  </div></span>
 </div>
 
 </div>
 
-</div>
+<div style=" width:1000px;height:680px;margin: 10px auto;">
+                
+                <div id="no_rtc" class="alert alert-error" style="display:none;"></div>
+                <div id="log" class="alert alert-info"></div>
+            </div>
+
+<script type="text/javascript">
+var stat = new profiler();
+
+var gui,options,ctx,canvasWidth,canvasHeight;
+var img_u8,work_canvas,work_ctx,ii_sum,ii_sqsum,ii_tilted,edg,ii_canny;
+var faceClassifier = jsfeat.haar['frontalface'];
+var upperBodyClassifier = jsfeat.haar['upperbody'];
+var faceX, faceY, faceW, faceH, shoulderX, shoulderY, shoulderW, shoulderH, retryCount=0;
+
+var max_work_size = 160;
+
+var demo_opt = function(){
+                this.min_scale = 2;
+                this.scale_factor = 1.15;
+                this.use_canny = false;
+                this.edges_density = 0.13;
+                this.equalize_histogram = true;
+            }
+
+  var canvas = document.getElementById('canvas');
+  var video = document.getElementById('camera-stream');
+  ctx = canvas.getContext('2d');
+
+
+function demo_app() {
+    canvasWidth  = canvas.width;
+    canvasHeight = canvas.height;
+    ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = "rgb(0,255,0)";
+    ctx.strokeStyle = "rgb(0,255,0)";
+
+    var scale = Math.min(max_work_size/canvasWidth, max_work_size/canvasHeight);
+    var w = (canvasWidth*scale)|0;
+    var h = (canvasHeight*scale)|0;
+
+    img_u8 = new jsfeat.matrix_t(w, h, jsfeat.U8_t | jsfeat.C1_t);
+    edg = new jsfeat.matrix_t(w, h, jsfeat.U8_t | jsfeat.C1_t);
+    work_canvas = document.createElement('canvas');
+    work_canvas.width = w;
+    work_canvas.height = h;
+    work_ctx = work_canvas.getContext('2d');
+    ii_sum = new Int32Array((w+1)*(h+1));
+    ii_sqsum = new Int32Array((w+1)*(h+1));
+    ii_tilted = new Int32Array((w+1)*(h+1));
+    ii_canny = new Int32Array((w+1)*(h+1));
+
+    options = new demo_opt();
+    gui = new dat.GUI();
+
+    gui.add(options, 'min_scale', 1, 4).step(0.1);
+    gui.add(options, 'scale_factor', 1.1, 2).step(0.025);
+    gui.add(options, 'equalize_histogram');
+    gui.add(options, 'use_canny');
+    gui.add(options, 'edges_density', 0.01, 1.).step(0.005);
+}
+
+function tick(classifier, type) {
+  var snap = document.getElementById('snap');
+    ctx.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+
+    work_ctx.drawImage(video, 0, 0, work_canvas.width, work_canvas.height);
+    var imageData = work_ctx.getImageData(0, 0, work_canvas.width, work_canvas.height);
+
+    jsfeat.imgproc.grayscale(imageData.data, img_u8.data);
+
+    // possible options
+    if(options.equalize_histogram) {
+        jsfeat.imgproc.equalize_histogram(img_u8, img_u8);
+    }
+    //jsfeat.imgproc.gaussian_blur(img_u8, img_u8, 3);
+
+    jsfeat.imgproc.compute_integral_image(img_u8, ii_sum, ii_sqsum, classifier.tilted ? ii_tilted : null);
+
+    if(options.use_canny) {
+        jsfeat.imgproc.canny(img_u8, edg, 10, 50);
+        jsfeat.imgproc.compute_integral_image(edg, ii_canny, null, null);
+    }
+
+    jsfeat.haar.edges_density = options.edges_density;
+    var rects = jsfeat.haar.detect_multi_scale(ii_sum, ii_sqsum, ii_tilted, options.use_canny? ii_canny : null, img_u8.cols, img_u8.rows, classifier, options.scale_factor, options.min_scale);
+    rects = jsfeat.haar.group_rectangles(rects, 1);
+
+    // draw only most confident one
+    captureSizes(ctx, rects, canvasWidth/img_u8.cols, 1, type);
+}
+
+function captureSizes(ctx, rects, sc, max, type) {
+    var on = rects.length;
+    console.log('rects: ', rects);
+    if(on && max) {
+        jsfeat.math.qsort(rects, 0, on-1, function(a,b){return (b.confidence<a.confidence);})
+    }
+    var n = max || on;
+    n = Math.min(n, on);
+    var r;
+    for(var i = 0; i < n; ++i) {
+        r = rects[i];
+        if(type == 'face') {
+          faceX = r.x*sc;
+          faceY = r.y*sc;
+          faceW = r.width*sc;
+          faceH = r.height*sc;
+        } else if(type == 'upperbody') {
+          shoulderX = r.x*sc;
+          shoulderY = r.y*sc;
+          shoulderW = r.width*sc;
+          shoulderH = r.height*sc;
+          if(shoulderX > faceX*2.2) {
+            demo_app();
+            tick(upperBodyClassifier, 'upperbody');
+            retryCount++;
+            if(retryCount >10) {
+              break;
+            }
+          }
+        }
+        ctx.strokeRect((r.x*sc)|0,(r.y*sc)|0,(r.width*sc)|0,(r.height*sc)|0);
+    }
+}
+
+
+
+</script>
+
 </body>
 
 </html>

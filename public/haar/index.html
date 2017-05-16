@@ -70,7 +70,7 @@
 
             var gui,options,ctx,canvasWidth,canvasHeight;
             var img_u8,work_canvas,work_ctx,ii_sum,ii_sqsum,ii_tilted,edg,ii_canny;
-            var classifier = jsfeat.haar.upperbody;
+            var classifier = jsfeat.haar['frontalface'];
 
             var max_work_size = 160;
 
@@ -83,6 +83,7 @@
             }
 
             function demo_app() {
+              debugger;
                 canvasWidth  = canvas.width;
                 canvasHeight = canvas.height;
                 ctx = canvas.getContext('2d');
