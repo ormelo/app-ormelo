@@ -64,12 +64,12 @@ var forceRedraw = function(element){
     element.appendChild(n);
     element.style.display = 'none';
 
-    /* setTimeout(function(){
+    setTimeout(function(){
         if(document.body.scrollTop == 0)
           document.body.scrollTop = 1;
         else
           document.body.scrollTop = 0;
-    },20); */
+    },20);
 }
 
 setInterval(function(){ forceRedraw(document.getElementById('start-camera')); }, 600); 
