@@ -410,6 +410,36 @@ html{
     display: flex;
 }
 
+
+.scanning:after {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    transform: rotate(90deg);
+    position: absolute;
+    top: -56px;
+    left: 0;
+    z-index: 9999;
+    background: linear-gradient(270deg, rgba(0,0,0,.7) 50%, rgba(0,255,0,.5) 55%, rgba(0,255,0,.7) 56%, rgba(0,0,0,.7) 56% );
+    background-size: 300% 100%;
+    background-repeat: no-repeat;
+    background-position: 84% center;
+    -webkit-animation: scan 1.7s infinite ease;
+}
+
+@-webkit-keyframes scan {
+  /* finish with the scan bar just off the right side */
+  100% { background-position: 30% center; }
+}
+
+/* these are just for the placeholder content */
+p, button { font-size: xx-large; font-family: sans-serif; }
+p img.left { float: left; margin-right: 1em; }
+p img.right { float: right; margin-left: 1em; }
+
+
+
 </style>
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -517,13 +547,7 @@ function demo_app() {
     ii_canny = new Int32Array((w+1)*(h+1));
 
     options = new demo_opt();
-    gui = new dat.GUI();
 
-    gui.add(options, 'min_scale', 1, 4).step(0.1);
-    gui.add(options, 'scale_factor', 1.1, 2).step(0.025);
-    gui.add(options, 'equalize_histogram');
-    gui.add(options, 'use_canny');
-    gui.add(options, 'edges_density', 0.01, 1.).step(0.005);
 }
 
 function tick(classifier, type) {

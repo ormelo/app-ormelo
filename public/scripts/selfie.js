@@ -96,7 +96,11 @@ take_photo_btn.addEventListener("click", function(e){
   tick(upperBodyClassifier, 'upperbody');
 
   // Pause video playback of stream.
-  video.pause();
+  // video.pause();
+  $('body').addClass('scanning');
+    setTimeout(function () {
+    }, 20 * 1000);
+
   setTimeout(function(){console.log('faceX: ', faceX);
     console.log('faceY: ', faceY);
     console.log('faceW: ', faceW);
@@ -110,7 +114,8 @@ take_photo_btn.addEventListener("click", function(e){
     //alert('Retry count: '+ retryCount);}, 3000);
     var fswRatio = faceW/(shoulderW*2);
     alert('F/S:'+fswRatio);
-  }, 3000);
+  }, 1300);
+
 });
 
 function showVideo(){
