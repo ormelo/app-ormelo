@@ -98,23 +98,17 @@ take_photo_btn.addEventListener("click", function(e){
   // Pause video playback of stream.
   // video.pause();
   $('body').addClass('scanning');
+  
     setTimeout(function () {
-    }, 20 * 1000);
-
-  setTimeout(function(){console.log('faceX: ', faceX);
-    console.log('faceY: ', faceY);
-    console.log('faceW: ', faceW);
-    console.log('faceH: ', faceH);
-    console.log('shoulderX: ', shoulderX);
-    console.log('shoulderY: ', shoulderY);
-    console.log('shoulderW: ', shoulderW);
-    console.log('shoulderH: ', shoulderH);
-    //alert('Face: '+ faceX+', '+faceY+', '+faceW+', '+faceH);
-    //alert('Shoulder: '+ shoulderX+', '+shoulderY+', '+shoulderW+', '+shoulderH);
-    //alert('Retry count: '+ retryCount);}, 3000);
-    var fswRatio = faceW/(shoulderW*2);
-    alert('F/S:'+fswRatio);
-  }, 1300);
+      $('body').removeClass('scanning');
+      var fswRatio = faceW/(shoulderW*2);
+      alert('F/S:'+fswRatio);
+      $('.app').css('opacity','0.2');
+      $('#take-photo').html('');
+      $('.capture').css('visibility','hidden');
+      $(".trigger").toggleClass("drawn");
+      setTimeout(function(){ location.href='/start'; }, 1000);
+    }, 2500);
 
 });
 
