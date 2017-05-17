@@ -119,13 +119,14 @@ take_photo_btn.addEventListener("click", function(e){
       
       
       setTimeout(function(){ $(".tick-container").hide();stepEMeasure(); }, 1500);
-    }, 3000);
+    }, 4000);
 
 });
 
 function stepEMeasure() {
   $("#step_selfie").removeClass('completed');
   $("#step_emeasure").addClass('completed');
+  location.href='/emeasure';
 }
 
 function showVideo(){

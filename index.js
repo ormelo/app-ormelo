@@ -21,6 +21,10 @@ app.get('/start', function(request, response) {
   response.render('pages/start');
 });
 
+app.get('/emeasure', function(request, response) {
+  response.render('pages/emeasure');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
