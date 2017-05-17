@@ -25,6 +25,10 @@ app.get('/emeasure', function(request, response) {
   response.render('pages/emeasure');
 });
 
+app.get('/shop', function(request, response) {
+  response.render('pages/shop');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

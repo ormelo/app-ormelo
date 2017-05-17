@@ -1048,7 +1048,7 @@ p img.right { float: right; margin-left: 1em; }
 </div>
 
 <div class="button-container capture">
-  <a id="capture-photo" href="#" class="btn"><span style="position: absolute;left: 66px;">Next ></span></a>
+  <a id="capture-photo" href="#" class="btn"><span style="position: absolute;left: 66px;letter-spacing: 0px;">Next ></span></a>
 </div>
 
 </div>
@@ -1083,6 +1083,11 @@ $("#flat-slider-vertical-1")
         last: "pip"
     })
     .slider("float");
+
+  $('#capture-photo').on('click',function() {
+    localStorage.setItem('height',selectedHeight);
+    location.href= '/shop';
+  })
 </script>
 
 </body>
