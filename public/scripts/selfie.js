@@ -113,6 +113,7 @@ take_photo_btn.addEventListener("click", function(e){
       $('.app').css('opacity','0');
       $('#take-photo').html('');
       $('.capture').css('visibility','hidden');
+      $('#confirmation').show();
       $(".trigger").toggleClass("drawn");
       // setTimeout(function(){ location.href='/start'; }, 1000);
     }, 3000);
