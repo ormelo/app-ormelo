@@ -97,10 +97,17 @@ take_photo_btn.addEventListener("click", function(e){
 
   // Pause video playback of stream.
   // video.pause();
-  $('.mask').addClass('scanning');
-  
+  if(screen.width < 1000) {
+    $('.mask').addClass('scanning');
+  } else {
+    $('body').css('opacity','0.4');
+  }
     setTimeout(function () {
-      $('.mask').removeClass('scanning');
+      if(screen.width < 1000) {
+        $('.mask').removeClass('scanning');
+      } else {
+        $('body').css('opacity','1');
+      }
       var fswRatio = faceW/(shoulderW*2);
       // alert('F/S:'+fswRatio);
       $('.app').css('opacity','0');
