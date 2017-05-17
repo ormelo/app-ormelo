@@ -95,8 +95,8 @@ html{
     }
     .top-menu {
       position: absolute;
-      top: 0px;
-      margin-left: 50px;
+      top: 22px;
+      margin-left: 54px;
     }
     .box-selfie {
       width:80%;height:80%;position: absolute;left: 10%;top: 80px;z-index: 9999;box-shadow: rgba(0, 0, 0, 0.529412) 0px 0px 57px -9px; background-color: rgb(255, 255, 255);border-radius:8px;-webkit-border-radius:8px;
@@ -212,7 +212,7 @@ html{
     }
     .top-menu {
       position: absolute;
-      top: 0px;
+      top: 24px;
       margin-left: 190px;
     }
     .headline {
@@ -262,7 +262,7 @@ html{
     }
     .top-menu {
       position: absolute;
-      top: 0px;
+      top: 24px;
       margin-left: 280px;
     }
     .headline {
@@ -481,6 +481,90 @@ p img.right { float: right; margin-left: 1em; }
     stroke-dashoffset: 0;
 }
 
+.step-indicator {
+  margin-bottom: 20px;
+  line-height: 30px;
+}
+
+.step {
+  display: block;
+  float: left;
+  padding-left: 2px;
+  font-weight: bold;
+  background: #f9f9f9;
+  padding-right: 10px;
+  height: 32px;
+  line-height: 32px;
+  margin-right: 33px;
+  position: relative;
+  text-decoration: none;
+  color: #666;
+  cursor: default;
+}
+.step:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: -30px;
+  border: 16px solid transparent;
+  border-color: #f9f9f9;
+  border-left-color: transparent;
+}
+.step:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  right: -32px;
+  border: 16px solid transparent;
+  border-left-color: #f9f9f9;
+}
+.step:first-of-type {
+  border-radius: 10px 0 0 10px;;
+  padding-left: 18px;
+}
+.step:first-of-type:before {
+  display: none;
+}
+.step:last-of-type {
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 25px;
+  padding-right: 15px;
+}
+.step:last-of-type:after {
+  display: none;
+}
+.step.completed {
+  background: #fe783c;
+  color: #fff;
+  cursor: pointer;
+}
+.step.completed:before {
+  border-color: #fe783c;
+  border-left-color: transparent;
+}
+.step.completed:after {
+  border-left-color: #fe783c;
+}
+.step.completed:hover {
+  background: #41A4F0;
+  border-color: #41A4F0;
+  color: #fff;
+  text-decoration: none;
+}
+.step.completed:hover:before {
+  border-color: #41A4F0;
+  border-left-color: transparent;
+}
+.step.completed:hover:after {
+  border-left-color: #41A4F0;
+}
+
 </style>
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -504,7 +588,13 @@ p img.right { float: right; margin-left: 1em; }
   <img class="small-logo" src="logos.png" style="width: 28px;margin: 12px 12px;">
   <img class="large-logo" src="logom.png" style="margin: 12px 12px;">
 </span>
-<div class="top-menu"><span class="description enabled">Selfie</span><span class="description">e-measure</span><span class="description">Shop</span></div>
+<!--<div class="top-menu"><span class="description enabled">Selfie</span><span class="description">e-measure</span><span class="description">Shop</span></div>-->
+
+<div class="step-indicator top-menu">
+  <a id="step_selfie" class="step completed" href="#">Selfie</a>
+  <a id="step_emeasure" class="step" href="#">e-measure</a>
+  <a id="step_shop" class="step" href="#">Shop</a>
+</div>
 
 
 

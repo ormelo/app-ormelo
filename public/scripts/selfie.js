@@ -115,10 +115,18 @@ take_photo_btn.addEventListener("click", function(e){
       $('.capture').css('visibility','hidden');
       $('#confirmation').show();
       $(".trigger").toggleClass("drawn");
-      // setTimeout(function(){ location.href='/start'; }, 1000);
+
+      
+      
+      setTimeout(function(){ $(".tick-container").hide();stepEMeasure(); }, 1500);
     }, 3000);
 
 });
+
+function stepEMeasure() {
+  $("#step_selfie").removeClass('completed');
+  $("#step_emeasure").addClass('completed');
+}
 
 function showVideo(){
   // Display the video stream and the controls.
