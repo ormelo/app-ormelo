@@ -497,7 +497,7 @@ p img.right { float: right; margin-left: 1em; }
 <script type="text/javascript" src="haar/lib/jsfeat-samples/js/dat.gui.min.js"></script>
 </head>
 
-<body style="overflow-x: hidden; overflow-y: hidden;">
+<body>
 <div class="container">
 <div>
 <span class="logo">
@@ -573,9 +573,13 @@ var gui,options,ctx,canvasWidth,canvasHeight;
 var img_u8,work_canvas,work_ctx,ii_sum,ii_sqsum,ii_tilted,edg,ii_canny;
 var faceClassifier = jsfeat.haar['frontalface'];
 var upperBodyClassifier = jsfeat.haar['upperbody'];
-var faceX, faceY, faceW, faceH, shoulderX, shoulderY, shoulderW, shoulderH, retryCount=0;
+var faceX, faceY, faceW, faceH, shoulderX, shoulderY, shoulderW, shoulderH, retryCount=0, scr;
 
 var max_work_size = 160;
+if(screen.width < 500){
+  $('body').css('overflow-x','hidden');
+  $('body').css('overflow-y','hidden');
+}
 
 var demo_opt = function(){
                 this.min_scale = 2;

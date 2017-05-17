@@ -72,12 +72,12 @@ var forceRedraw = function(element){
     },20);
 }
 
-setInterval(function(){ forceRedraw(document.getElementById('start-camera')); }, 600); 
+scr = setInterval(function(){ forceRedraw(document.getElementById('start-camera')); }, 600); 
 
 take_photo_btn.addEventListener("click", function(e){
 
   e.preventDefault();
-
+  clearInterval(scr);
   var snap = takeSnapshot();
 
   // Show image. 
