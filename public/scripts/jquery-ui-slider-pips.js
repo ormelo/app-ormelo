@@ -443,7 +443,7 @@
                             "<span class=\"ui-slider-line\"></span>" +
                             "<span class=\"ui-slider-label\" data-value=\"" +
                                 labelValue + "\">" + options.formatLabel(label) + "</span>" +
-                        "</span>";
+                        "<span style='font-size:8px;margin-left:40px'>"+labelValue+"</span></span>";
 
             }
 
