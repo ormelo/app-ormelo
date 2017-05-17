@@ -103,7 +103,7 @@ take_photo_btn.addEventListener("click", function(e){
       $('.mask').removeClass('scanning');
       var fswRatio = faceW/(shoulderW*2);
       // alert('F/S:'+fswRatio);
-      $('.app').css('opacity','0.2');
+      $('.app').css('opacity','0');
       $('#take-photo').html('');
       $('.capture').css('visibility','hidden');
       $(".trigger").toggleClass("drawn");
