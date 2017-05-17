@@ -1,5 +1,32 @@
 /*! jQuery-ui-Slider-Pips - v1.11.4 - 2016-09-04
 * Copyright (c) 2016 Simon Goellner <simey.me@gmail.com>; Licensed MIT */
+var heightArr = new Array();
+heightArr['0'] = "4'4";
+heightArr['1'] = "4'5";
+heightArr['2'] = "4'6";
+heightArr['3'] = "4'7";
+heightArr['4'] = "4'8";
+heightArr['5'] = "4'9";
+heightArr['6'] = "4'10";
+heightArr['7'] = "4'11";
+heightArr['8'] = "5'0";
+heightArr['9'] = "5'1";
+heightArr['10'] = "5'2";
+heightArr['11'] = "5'3";
+heightArr['12'] = "5'4";
+heightArr['13'] = "5'5";
+heightArr['14'] = "5'6";
+heightArr['15'] = "5'7";
+heightArr['16'] = "5'8";
+heightArr['17'] = "5'9";
+heightArr['18'] = "5'10";
+heightArr['19'] = "5'11";
+heightArr['20'] = "6'0";
+heightArr['21'] = "6'1";
+heightArr['22'] = "6'2";
+heightArr['23'] = "6'3";
+heightArr['24'] = "6'4";
+heightArr['25'] = "6'5";
 
 (function($) {
 
@@ -437,13 +464,13 @@
                     "left: " + percent :
                     "bottom: " + percent;
 
-
+                labelValue = heightArr[labelValue];
                 // add this current pip to the collection
                 return "<span class=\"" + classes + "\" style=\"" + css + "\">" +
                             "<span class=\"ui-slider-line\"></span>" +
                             "<span class=\"ui-slider-label\" data-value=\"" +
                                 labelValue + "\">" + options.formatLabel(label) + "</span>" +
-                        "<span style='font-size:8px;margin-left:40px'>"+labelValue+"</span></span>";
+                        "<span style='margin-left:40px;'>"+labelValue+"</span></span>";
 
             }
 
