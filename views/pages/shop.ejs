@@ -607,7 +607,41 @@ p img.right { float: right; margin-left: 1em; }
 
 
 
-<div class="box-selfie box_instructions" style="
+<div class="men box-selfie box_instructions" style="
+    background-image: url(img/cat_formal_shirts.jpg);
+    background-size: 146px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    width: 124px;
+    height: 44px;
+    -webkit-border-radius: 88px;
+    top:172px;
+    ">
+<div class="box-selfie-inner"></div>
+<div class="box-title box_instructions">
+<span><div style="font-size: 20px;position: relative;color: white;top: -4px;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;">Shirts</div></span>
+</div><div class="selected" style="float: right;margin-top: 12px;margin-right: 15px;display: none">X</div>
+</div>
+
+
+
+<div class="men box-selfie box_instructions" style="background-image: url(img/cat_tshirtsmen.jpg);
+    background-size: 146px;
+    background-repeat: no-repeat;
+    background-position: 46%;
+    width: 139px;
+    height: 44px;
+    -webkit-border-radius: 88px;
+    top:172px;left:49%">
+<div class="box-selfie-inner"></div>
+<div class="box-title box_instructions">
+<span><div style="font-size: 20px;position: relative;color: black;top: -4px;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;">T-shirts</div></span>
+</div><div class="selected" style="float: right;margin-top: 12px;margin-right: 15px;display: none">X</div>
+</div>
+
+
+
+<div class="women box-selfie box_instructions" style="
     background-image: url(img/cat_kurtis.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
@@ -620,12 +654,12 @@ p img.right { float: right; margin-left: 1em; }
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
 <span><div style="font-size: 20px;position: relative;color: white;top: -4px;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;">Kurtis</div></span>
-</div><div></div>
+</div><div class="selected" style="float: right;margin-top: 12px;margin-right: 15px;display: none">X</div>
 </div>
 
 
 
-<div class="box-selfie box_instructions" style="background-image: url(img/cat_officewear.jpg);
+<div class="women box-selfie box_instructions" style="background-image: url(img/cat_officewear.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
     background-position: 46%;
@@ -636,12 +670,12 @@ p img.right { float: right; margin-left: 1em; }
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
 <span><div style="font-size: 20px;position: relative;color: white;top: -4px;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;">Officewear</div></span>
-</div><div></div>
+</div><div class="selected" style="float: right;margin-top: 12px;margin-right: 15px;display: none">X</div>
 </div>
 
 
 
-<div class="box-selfie box_instructions" style="background-image: url(img/cat_tops.jpg);
+<div class="women box-selfie box_instructions" style="background-image: url(img/cat_tops.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
     background-position: 50% 80%;
@@ -652,11 +686,11 @@ p img.right { float: right; margin-left: 1em; }
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
 <span><div style="font-size: 20px;position: relative;color: white;top: -4px;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;">Tops</div></span>
-</div><div></div>
+</div><div class="selected" style="float: right;margin-top: 12px;margin-right: 15px;display: none">X</div>
 </div>
 
 
-<div class="box-selfie box_instructions" style="background-image: url(img/cat_outdoor.jpg);
+<div class="women box-selfie box_instructions" style="background-image: url(img/cat_outdoor.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -668,7 +702,7 @@ p img.right { float: right; margin-left: 1em; }
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
 <span><div style="font-size: 14px;position: relative;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;top: 8px;left: -20px;color:Black;">Outdoor</div></span>
-</div><div></div>
+</div><div class="selected" style="float: right;margin-top: 12px;margin-right: 15px;display: none">X</div>
 </div>
 
 
@@ -682,7 +716,26 @@ p img.right { float: right; margin-left: 1em; }
 <div class="mask" style="position: absolute;top: 135px;"></div>
 <script type="text/javascript">
 
+var origLeft,origTop;
+if(localStorage.getItem('m')=='true') {
+  $('.men').show();
+  $('.women').hide();
+}
 
+$('.box-selfie').on('click',function(e) {
+  origLeft = $(this).css('left');
+  origTop = $(this).css('top');
+  $('.content-title').hide();
+  $('.box-selfie').hide();
+  $(this).show();
+  $(this).animate({top: '72px', left: '50px'}, 500, function () {
+    console.log('done!');
+    $('.selected').show();
+    $('.box-selfie').on('click',function(e) {
+      location.reload();
+    });
+  });
+})
 
 </script>
 

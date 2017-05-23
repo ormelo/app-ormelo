@@ -242,5 +242,13 @@ html{
 <div class="glitter" style="margin-top:-100px;z-index:0;">
 </body>
 
+<script language="Javascript">
+if(location.href.indexOf('?m') !== -1) {
+  localStorage.setItem('m','true');
+} else {
+  localStorage.removeItem('m');
+}
+</script>
+
 </html>
 
