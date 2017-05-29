@@ -845,10 +845,16 @@ $('.box-selfie').on('click',function(e) {
               var faceW = localStorage.getItem('faceW');
               var faceH = localStorage.getItem('faceH');
 
-              var newLeft = $(window).width()/2 - ((95)/2);
+              var newLeft = $(window).width()/2 - ((96)/2);
               var newTop = 50;
               ctx.drawImage(img.currentTarget, parseInt(faceX,10)-20, parseInt(faceY,10)-90, parseInt(faceW,10)+20, parseInt(faceH,10)+150, newLeft, newTop, 93, 124);
             };
+
+
+            var transparentImg = document.createElement('img');
+            transparentImg.className = 'actual-prod';
+            transparentImg.src = 'img/tbg.png';
+            productBg.appendChild(transparentImg);
             
 
             var productImg = document.createElement('img');
