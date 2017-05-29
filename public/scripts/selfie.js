@@ -118,7 +118,13 @@ take_photo_btn.addEventListener("click", function(e){
 
       
       
-      setTimeout(function(){ $(".tick-container").hide();stepEMeasure(); }, 1500);
+      setTimeout(function(){ $(".tick-container").hide();
+        localStorage.setItem('pic',canvas.toDataURL());
+        localStorage.setItem('faceX',faceX);
+        localStorage.setItem('faceY',faceY);
+        localStorage.setItem('faceW',faceW);
+        localStorage.setItem('faceH',faceH);
+        stepEMeasure(); }, 1500);
     }, 4000);
 
 });

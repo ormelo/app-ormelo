@@ -27,6 +27,23 @@ html{
   font-size: 20px;
   color: #a7a7a7;
 }
+.products {
+  position: absolute;top: 162px;height: 100%;display: none;
+}
+.product-bg {
+  background-image: url(img/pbg.png);
+  width: 100vw;height: 460px;
+  background-size: cover;
+  position: relative;
+}
+.actual-prod {
+  width: 200px;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 144px;
+}
 .tick-container {
     position: absolute;
     left: 40%;
@@ -157,6 +174,36 @@ html{
         }
 
 
+    .men.box-selfie.box_instructions.shirts {
+        position: relative;
+        left: 56px;
+        top: -50px;
+    }
+    .men.box-selfie.box_instructions.tshirts {
+        position: relative;
+        top: -94px;
+        left: 195px;
+    }
+    .women.box-selfie.box_instructions.kurtis {
+        position: relative;
+        left: 56px;
+        top: -50px;
+    }
+    .women.box-selfie.box_instructions.officewear {
+        position: relative;
+        top: -94px;
+        left: 195px;
+    }
+    .women.box-selfie.box_instructions.tops {
+        position: relative;
+        top: -74px;
+        left: 56px;
+    }
+    .women.box-selfie.box_instructions.outdoor {
+        position: relative;
+        top: -116px;
+        left: 195px;
+    }
     @media (max-width: 599px){
     .container{
         with: 100%;
@@ -167,8 +214,17 @@ html{
       background-size: cover;
       background-position-y: -15px;
     }
+    .content-title {
+      font-size: 22px; color: #000;
+    }
+    .content {
+      position: relative;margin: 0 auto;text-align: center;top: -76px;width:300px;
+    }
     .large-logo {
       display: none;
+    }
+    .content {
+      position: relative;margin: 0 auto;text-align: center;top: -76px;width:300px;
     }
     .headline {
       margin: 0 auto;
@@ -206,6 +262,15 @@ html{
       height: 123px;
       background-size: cover;
       background-position-y: -31px;
+    }
+    .content-title {
+      font-size: 28px; color: #000;
+    }
+    .content {
+      position: relative;margin: 0 auto;text-align: center;top: -76px;width:500px;
+    }
+    .content-title {
+      font-size: 24px; 
     }
     .large-logo {
       display: inline;
@@ -251,11 +316,27 @@ html{
       z-index: 0;
       top: 20%;
     }
+    .women.box-selfie.box_instructions.cat3 {
+      position: relative;
+      top: -138px;
+      left: 350px;
+    }
+    .women.box-selfie.box_instructions.cat4 {
+      position: relative;
+      top: -182px;
+      left: 490px;
+    }
     .glitter {
       background-image: url(glitter.jpg);
       height: 123px;
       background-size: cover;
       background-position-y: -31px;
+    }
+    .content-title {
+      font-size: 28px; color: #000;
+    }
+    .content {
+      position: relative;margin: 0 auto;text-align: center;top: -76px;width:1000px;
     }
     .large-logo {
       display: inline;
@@ -291,10 +372,7 @@ html{
       width: 172px;
     }
     .box-selfie {
-      width:60%;height:20%;position: absolute;left: 20%;top: 130px;z-index: 9999;
-    }
-    .box-selfie-inner {
-      padding: 300px;
+      width:60%;height:20%;position: absolute;left: 20%;z-index: 9999;
     }
 }
 .app{
@@ -601,13 +679,13 @@ p img.right { float: right; margin-left: 1em; }
 
 
 
-<div class="content" style="position: relative;margin: 0 auto;text-align: center;top: -76px;width:300px;"><span class="content-title">Choose one or more categories you wish to shop<span></span></span>
+<div class="content"><span class="content-title">Pick a category to shop<span></span></span>
 
 </div>
 
 
 
-<div class="men box-selfie box_instructions" style="
+<div class="men box-selfie box_instructions shirts" style="
     background-image: url(img/cat_formal_shirts.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
@@ -615,7 +693,6 @@ p img.right { float: right; margin-left: 1em; }
     width: 124px;
     height: 44px;
     -webkit-border-radius: 88px;
-    top:172px;
     ">
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
@@ -625,14 +702,13 @@ p img.right { float: right; margin-left: 1em; }
 
 
 
-<div class="men box-selfie box_instructions" style="background-image: url(img/cat_tshirtsmen.jpg);
+<div class="men box-selfie box_instructions tshirts" style="background-image: url(img/cat_tshirtsmen.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
     background-position: 46%;
     width: 139px;
     height: 44px;
-    -webkit-border-radius: 88px;
-    top:172px;left:49%">
+    -webkit-border-radius: 88px;">
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
 <span><div style="font-size: 20px;position: relative;color: black;top: -4px;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;">T-shirts</div></span>
@@ -641,7 +717,7 @@ p img.right { float: right; margin-left: 1em; }
 
 
 
-<div class="women box-selfie box_instructions" style="
+<div class="women box-selfie box_instructions kurtis" style="
     background-image: url(img/cat_kurtis.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
@@ -649,7 +725,6 @@ p img.right { float: right; margin-left: 1em; }
     width: 124px;
     height: 44px;
     -webkit-border-radius: 88px;
-    top:172px;
     ">
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
@@ -659,14 +734,13 @@ p img.right { float: right; margin-left: 1em; }
 
 
 
-<div class="women box-selfie box_instructions" style="background-image: url(img/cat_officewear.jpg);
+<div class="women box-selfie box_instructions officewear" style="background-image: url(img/cat_officewear.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
     background-position: 46%;
     width: 139px;
     height: 44px;
-    -webkit-border-radius: 88px;
-    top:172px;left:49%">
+    -webkit-border-radius: 88px;">
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
 <span><div style="font-size: 20px;position: relative;color: white;top: -4px;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;">Officewear</div></span>
@@ -675,14 +749,13 @@ p img.right { float: right; margin-left: 1em; }
 
 
 
-<div class="women box-selfie box_instructions" style="background-image: url(img/cat_tops.jpg);
+<div class="women box-selfie box_instructions tops" style="background-image: url(img/cat_tops.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
     background-position: 50% 80%;
     width: 124px;
     height: 44px;
-    -webkit-border-radius: 88px;
-    left:23%;top:250px">
+    -webkit-border-radius: 88px;">
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
 <span><div style="font-size: 20px;position: relative;color: white;top: -4px;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;">Tops</div></span>
@@ -690,15 +763,13 @@ p img.right { float: right; margin-left: 1em; }
 </div>
 
 
-<div class="women box-selfie box_instructions" style="background-image: url(img/cat_outdoor.jpg);
+<div class="women box-selfie box_instructions outdoor" style="background-image: url(img/cat_outdoor.jpg);
     background-size: 146px;
     background-repeat: no-repeat;
     background-position: 50%;
     width: 124px;
     height: 44px;
-    -webkit-border-radius: 88px;
-    left:63%;
-    top:250px;">
+    -webkit-border-radius: 88px;">
 <div class="box-selfie-inner"></div>
 <div class="box-title box_instructions">
 <span><div style="font-size: 14px;position: relative;box-shadow: rgb(0, 0, 0) 0px 0px 22px -9px;top: 8px;left: -20px;color:Black;">Outdoor</div></span>
@@ -713,13 +784,28 @@ p img.right { float: right; margin-left: 1em; }
 </div>
 
 
+
+<div class="products">
+<div class="product" id="product">
+  <!--<div class="product-bg"><img class="actual-prod" src="img/products/m/tshirts/1/xxl.png"></img></div>
+  <div class="product-bg"><img class="actual-prod" src="img/products/m/tshirts/2/xxl.png"></img></div>-->
+  </div>
+</div>
+
+
 <div class="mask" style="position: absolute;top: 135px;"></div>
 <script type="text/javascript">
 
-var origLeft,origTop;
+var origLeft,origTop, selectedCat;
+var urlMap = new Array();
+urlMap['tshirts'] = 'https://api.myjson.com/bins/8lsnl';
+
 if(localStorage.getItem('m')=='true') {
   $('.men').show();
   $('.women').hide();
+} else {
+  $('.men').hide();
+  $('.women').show();
 }
 
 $('.box-selfie').on('click',function(e) {
@@ -728,14 +814,67 @@ $('.box-selfie').on('click',function(e) {
   $('.content-title').hide();
   $('.box-selfie').hide();
   $(this).show();
-  $(this).animate({top: '72px', left: '50px'}, 500, function () {
-    console.log('done!');
+  $(this).animate({top: '-72px', left: '50px'}, 500, function () {
+    selectedCat = $(this).attr('class').split(' ')[3];
     $('.selected').show();
     $('.box-selfie').on('click',function(e) {
       location.reload();
     });
+    if(urlMap[getCategory()] != null) {
+      $.get(urlMap[getCategory()], function(data, status){
+          $('.products').show();
+          for(var i=0;i<data.length;i++) {
+            var productBg = document.createElement('div');
+            productBg.className = 'product-bg';
+
+            var productCanvas = document.createElement('canvas');
+            productCanvas.id = 'canvas'+i;
+            productCanvas.height = '460';
+            productCanvas.width = $( window ).width();
+            productBg.appendChild(productCanvas);
+
+            var imageObj = new Image();
+            imageObj.id = 'img'+i;
+            imageObj.src = localStorage.getItem('pic');
+            imageObj.style.display = 'none';
+            document.body.appendChild(imageObj);
+            document.getElementById('img'+i).onload = function(img) {
+              var ctx=document.getElementById('canvas'+img.currentTarget.id.substr(3)).getContext("2d");
+              var faceX = localStorage.getItem('faceX');
+              var faceY = localStorage.getItem('faceY');
+              var faceW = localStorage.getItem('faceW');
+              var faceH = localStorage.getItem('faceH');
+
+              var newLeft = $(window).width()/2 - ((94)/2);
+              var newTop = 56;
+              ctx.drawImage(img.currentTarget, parseInt(faceX,10)-20, parseInt(faceY,10)-90, parseInt(faceW,10)+20, parseInt(faceH,10)+150, newLeft, newTop, 92, 115);
+            };
+            
+
+            var productImg = document.createElement('img');
+            productImg.className = 'actual-prod';
+            productImg.src = 'img/products/'+getGender()+'/'+getCategory()+'/'+(i+1)+'/'+getSize()+'.png';
+            productBg.appendChild(productImg);
+
+            document.getElementById('product').appendChild(productBg);
+
+          }
+      });
+    }
   });
 })
+
+function getCategory() {
+  return selectedCat;
+}
+
+function getGender() {
+  return localStorage.getItem('m') != null && localStorage.getItem('m')=='true' ? 'm' : 'f';
+}
+
+function getSize() {
+  return 'xxl';
+}
 
 </script>
 
