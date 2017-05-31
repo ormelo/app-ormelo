@@ -861,7 +861,6 @@ $('.box-selfie').on('click',function(e) {
             var productImg = document.createElement('img');
             productImg.className = 'actual-prod';
             productImg.src = 'img/products/'+getGender()+'/'+getCategory()+'/'+(i+1)+'/'+getSize()+'.png';
-            productImg.style = 'filter: drop-shadow(-15px 26px 26px #222);-webkit-filter: drop-shadow(-15px 26px 26px #222);';
             productBg.appendChild(productImg);
 
             document.getElementById('product').appendChild(productBg);
