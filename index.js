@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -9,24 +10,8 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
-  response.render('pages/index');
-});
-
-app.get('/onboard', function(request, response) {
-  response.render('pages/onboard');
-});
-
-app.get('/start', function(request, response) {
-  response.render('pages/start');
-});
-
-app.get('/emeasure', function(request, response) {
-  response.render('pages/emeasure');
-});
-
-app.get('/shop', function(request, response) {
-  response.render('pages/shop');
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 app.listen(app.get('port'), function() {
